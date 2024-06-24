@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerWallet))]
 public class Player : MonoBehaviour
 {
 	private PlayerWallet _playerWallet;
+
+	private void Awake()
+	{
+		PlayerStats.InitStats();
+	}
 
 	private void OnEnable()
 	{
@@ -27,4 +34,19 @@ public class Player : MonoBehaviour
 		_playerWallet.IncreceBalane(value);
 	}
 
+}
+
+public static class PlayerStats
+{
+	public static float DamageAmount { get; private set; }
+
+	public static void InitStats()
+	{
+		
+	}
+
+	public static void IncreseAmount(float value)
+	{
+		DamageAmount += value;
+	}
 }
